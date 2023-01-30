@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  seaweedfs:
+    image: chrislusf/seaweedfs:dev # use a remote dev image
+    ports:
+      - 9333:9333
+      - 19333:19333
+      - 8080:8080
+      - 18080:18080
+      - 8888:8888
+      - 18888:18888
+    command: "master -ip=seaweedfs"
+  develop:
+    image: python:3.9.16
+    volumes:
+      - ./client:/client
+    tty: true
